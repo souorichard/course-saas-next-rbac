@@ -1,7 +1,7 @@
 import { Slash } from 'lucide-react'
 import Image from 'next/image'
 
-import rockeseatIcon from '@/assets/rockseat-icon.svg'
+import rockeseatIcon from '@/assets/rocketseat-icon.svg'
 
 import { OrganizationSwitcher } from './organization-switcher'
 import { ProfileButton } from './profile-button'
