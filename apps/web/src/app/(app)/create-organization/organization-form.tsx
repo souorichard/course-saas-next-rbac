@@ -15,6 +15,7 @@ export function OrganizationForm() {
   const [{ errors, message, success }, handleSubmit, isPending] = useFormState(
     createOrganizationAction,
   )
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {success === false && message && (
@@ -52,7 +53,6 @@ export function OrganizationForm() {
         <Label htmlFor="domain">Email domain</Label>
         <Input
           name="domain"
-          type="test"
           id="domain"
           inputMode="url"
           placeholder="example.com"
