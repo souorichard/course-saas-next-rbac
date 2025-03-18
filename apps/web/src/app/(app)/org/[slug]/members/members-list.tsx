@@ -26,6 +26,8 @@ export async function MembersList() {
 
   return (
     <div className="space-y-2">
+      <h1 className="text-lg font-bold">Members</h1>
+
       <div className="rounded border">
         <Table>
           <TableBody>
