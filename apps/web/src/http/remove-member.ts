@@ -1,6 +1,6 @@
 import { api } from './api-client'
 
-interface ShutdownOrganizationRequest {
+interface RemoveMemberRequest {
   organization: string
   memberId: string
 }
@@ -8,6 +8,6 @@ interface ShutdownOrganizationRequest {
 export async function removeMember({
   organization,
   memberId,
-}: ShutdownOrganizationRequest) {
+}: RemoveMemberRequest) {
   await api.delete(`organization/${organization}/members/${memberId}`)
 }
