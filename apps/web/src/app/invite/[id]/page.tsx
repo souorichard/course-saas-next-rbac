@@ -1,7 +1,8 @@
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { LogIn } from 'lucide-react'
+import { LogIn, LogOut } from 'lucide-react'
 import { cookies } from 'next/headers'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 import { auth, isAuthenticated } from '@/auth/auth'
@@ -93,6 +94,38 @@ export default async function Invite({ params }: InviteProps) {
               Join {invite.organization.name}
             </Button>
           </form>
+        )}
+
+        {isUseAuthenticated && !isUseAuthenticatedWithSameEmailFromInvite && (
+          <div className="space-y-4">
+            <p className="text=balance text-center text-sm leading-relaxed text-muted-foreground">
+              This invite was sent to{' '}
+              <span className="font-medium text-foreground">
+                {invite.email}
+              </span>{' '}
+              but you are currently authenticated as{' '}
+              <span className="font-medium text-foreground">
+                {currentUserEmail}
+              </span>
+              .
+            </p>
+
+            <div className="space-y-2">
+              <Button variant="secondary" className="w-full" asChild>
+                <a href="/api/auth/sign-out">
+                  <LogOut className="mr-2 size-4" />
+                  Sign out from {currentUserEmail}
+                </a>
+              </Button>
+
+              <Button variant="outline" className="w-full" asChild>
+                <Link href="/">
+                  <LogOut className="mr-2 size-4" />
+                  Back to dashboard
+                </Link>
+              </Button>
+            </div>
+          </div>
         )}
       </div>
     </div>
